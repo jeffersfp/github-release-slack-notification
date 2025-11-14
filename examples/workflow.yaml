@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
-        uses: jeffersfp/github-release-slack-notification@v0.0.0
+        uses: jeffersfp/github-release-slack-notification@v0.0.1
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           mentions: 'U1234567890,U0987654321'
