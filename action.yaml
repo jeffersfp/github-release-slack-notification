@@ -1,0 +1,25 @@
+name: 'Slack Release Notifications'
+description: 'Automated Slack notifications for GitHub releases - perfect for teams and SDK announcements'
+author: 'Jefferson Pires <jeffersfp@gmail.com>'
+
+branding:
+  icon: 'bell'
+  color: 'green'
+
+inputs:
+  slack-webhook-url:
+    description: 'Slack webhook URL for sending notifications'
+    required: true
+  mentions:
+    description: 'Comma-separated list of Slack user IDs to mention'
+    required: false
+
+outputs:
+  message-sent:
+    description: 'Whether the message was sent successfully'
+  slack-response:
+    description: 'Response from Slack API'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js' 

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Pre-commit hook to ensure dist/ is built and up to date
+
+echo "🔍 Checking if distribution needs to be rebuilt..."
+
+# Only run if src/ or package.json changed
+if git diff --cached --name-only | grep -qE '^(src/|package\.json)'; then
+  echo "📦 Changes detected in src/ or package.json"
+  echo "🏗️  Building distribution..."
+  
+  npm run build --silent
+  
+  # Check if dist/ changed after build
+  if ! git diff --exit-code --quiet dist/; then
+    echo ""
+    echo "⚠️  Distribution was out of sync!"
+    echo ""
+    echo "✅ I've rebuilt it for you. Files updated:"
+    git diff --name-only dist/
+    echo ""
+    echo "📝 Adding dist/ to this commit..."
+    git add dist/
+    echo "✅ Done! Proceeding with commit."
+  else
+    echo "✅ Distribution is up to date"
+  fi
+else
+  echo "✅ No source changes detected, skipping build"
+fi
+
+echo ""

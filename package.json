@@ -1,0 +1,51 @@
+{
+  "name": "github-release-slack-notification",
+  "version": "0.0.0",
+  "description": "Action to publish notification to Slack on new release",
+  "keywords": [
+    "slack",
+    "slack-notifications",
+    "slack-webhook",
+    "slack-alerts",
+    "github-actions",
+    "github-releases",
+    "release-notifications",
+    "release-alerts",
+    "notifications",
+    "webhook",
+    "automation",
+    "ci-cd",
+    "devops",
+    "team-communication"
+  ],
+  "homepage": "https://github.com/jeffersfp/github-release-notification#readme",
+  "bugs": {
+    "url": "https://github.com/jeffersfp/github-release-notification/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffersfp/github-release-notification.git"
+  },
+  "license": "MIT",
+  "author": "Jefferson Pires <jeffersfp@gmail.com>",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --source-map",
+    "package": "npm run build",
+    "check-dist": "npm run build && git diff --exit-code dist/",
+    "prepare-release": "node scripts/prepare-release.js",
+    "version:patch": "npm version patch && git push && git push --tags",
+    "version:minor": "npm version minor && git push && git push --tags",
+    "version:major": "npm version major && git push && git push --tags",
+    "postinstall": "git config core.hooksPath .githooks 2>/dev/null || true"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1",
+    "@instantish/mack": "^1.2.0",
+    "@vercel/ncc": "^0.38.4"
+  }
+}

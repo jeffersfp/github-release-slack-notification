@@ -1,0 +1,58 @@
+name: 🚀 Release Request
+description: Request a new release
+title: "[Release] v"
+labels: ["release"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Release Request
+        
+        Use this template to request a new release. Maintainers will use `npm run prepare-release` to create it.
+
+  - type: dropdown
+    id: version-type
+    attributes:
+      label: Version Bump Type
+      description: What type of version bump is needed?
+      options:
+        - Patch (bug fixes)
+        - Minor (new features)
+        - Major (breaking changes)
+    validations:
+      required: true
+
+  - type: textarea
+    id: changes
+    attributes:
+      label: Changes Since Last Release
+      description: List the main changes that should be included in this release
+      placeholder: |
+        - Fixed issue with...
+        - Added support for...
+        - Breaking: Changed...
+    validations:
+      required: true
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing Done
+      description: How have these changes been tested?
+      placeholder: |
+        - Tested with repository X
+        - Verified with Slack webhook
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-release Checklist
+      options:
+        - label: All PRs/commits are merged to main
+          required: true
+        - label: CI is passing on main branch
+          required: true
+        - label: README and docs are up to date
+          required: true
