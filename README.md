@@ -116,7 +116,7 @@ jobs:
 ## ⚙️ Inputs
 
 | Input | Description | Required | Default |
-|-------|-------------|----------|---------||
+|-------|-------------|----------|---------|
 | `slack-webhook-url` | Slack webhook URL for sending notifications | ✅ Yes | - |
 | `include-changelog` | Whether to include the release changelog in the message | ❌ No | `true` |
 | `mentions` | Comma-separated list of Slack user IDs to mention | ❌ No | - |
