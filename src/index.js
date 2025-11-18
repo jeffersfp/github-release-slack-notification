@@ -6,6 +6,7 @@ const https = require('https');
 function getActionInputs() {
   return {
     slackWebhookUrl: core.getInput('slack-webhook-url'),
+    includeChangelog: core.getInput('include-changelog'),
     mentions: core.getInput('mentions'),
   }
 }
@@ -112,22 +113,27 @@ async function createSlackMessage(inputs, releaseData) {
           },
         ]
       },
-      dividerBlock,
-      ...releaseBodyBlocks,
-      dividerBlock,
     ]
   };
+
+  // Add changelog section if specified
+  if (inputs.includeChangeLog && releaseBodyBlocks.length > 0) {
+    message.blocks.push(dividerBlock, ...releaseBodyBlocks);
+  }
 
   // Add mentions if specified
   if (inputs.mentions) {
     const mentionsList = inputs.mentions.split(',').map(id => `<@${id.trim()}>`).join(' ');
-    message.blocks.push({
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text: `👥 *Team Notification:* ${mentionsList}`
+    message.blocks.push(
+      dividerBlock,
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `👥 *Team Notification:* ${mentionsList}`
+        }
       }
-    });
+    );
   }
 
   return message;
