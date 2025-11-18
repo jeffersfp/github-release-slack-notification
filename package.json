@@ -1,6 +1,6 @@
 {
   "name": "github-release-slack-notification",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Action to publish notification to Slack on new release",
   "keywords": [
     "slack",
