@@ -67,6 +67,26 @@ jobs:
           mentions: 'U1234567890,U0987654321'
 ```
 
+### Without Changelog
+
+```yaml
+name: Release Notifications
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        uses: jeffersfp/github-release-slack-notification@v0.0.1
+        with:
+          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          include-changelog: 'false'
+```
+
 ### With Error Handling
 
 ```yaml
@@ -96,8 +116,9 @@ jobs:
 ## ⚙️ Inputs
 
 | Input | Description | Required | Default |
-|-------|-------------|----------|---------|
+|-------|-------------|----------|---------||
 | `slack-webhook-url` | Slack webhook URL for sending notifications | ✅ Yes | - |
+| `include-changelog` | Whether to include the release changelog in the message | ❌ No | `true` |
 | `mentions` | Comma-separated list of Slack user IDs to mention | ❌ No | - |
 
 ### Getting Slack User IDs
