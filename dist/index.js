@@ -37188,7 +37188,6 @@ async function createSlackMessage(inputs, releaseData) {
   const isPrerelease = release.prerelease;
 
   const releaseType = isPrerelease ? '🚧 Pre-release' : '🚀 New Release';
-  const emoji = isPrerelease ? ':construction:' : ':rocket:';
 
   // Get the formatted release body blocks
   const releaseBodyBlocks = await formatReleaseBody(release.body, release.html_url);
@@ -37203,8 +37202,7 @@ async function createSlackMessage(inputs, releaseData) {
         type: 'header',
         text: {
           type: 'plain_text',
-          text: `${emoji} ${releaseType}: ${repoName}`,
-          emoji: true
+          text: `${releaseType}: ${repoName}`,
         }
       },
       {
