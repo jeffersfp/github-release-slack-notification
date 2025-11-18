@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
-        uses: jeffersfp/github-release-slack-notification@v0.0.1
+        uses: jeffersfp/github-release-slack-notification@v0.1.0
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
-        uses: jeffersfp/github-release-slack-notification@v0.0.1
+        uses: jeffersfp/github-release-slack-notification@v0.1.0
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           mentions: 'U1234567890,U0987654321'
@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Notification
-        uses: jeffersfp/github-release-slack-notification@v0.0.1
+        uses: jeffersfp/github-release-slack-notification@v0.1.0
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           include-changelog: 'false'
@@ -102,7 +102,7 @@ jobs:
     steps:
       - name: Send Slack Notification
         id: slack
-        uses: jeffersfp/github-release-slack-notification@v0.0.1
+        uses: jeffersfp/github-release-slack-notification@v0.1.0
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
           mentions: ${{ secrets.SLACK_TEAM_MEMBERS }}
