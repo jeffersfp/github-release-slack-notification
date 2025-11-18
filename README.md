@@ -87,32 +87,6 @@ jobs:
           include-changelog: 'false'
 ```
 
-### With Error Handling
-
-```yaml
-name: Release Notifications
-
-on:
-  release:
-    types: [published, prereleased]
-
-jobs:
-  notify-slack:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Slack Notification
-        id: slack
-        uses: jeffersfp/github-release-slack-notification@v0.1.0
-        with:
-          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          mentions: ${{ secrets.SLACK_TEAM_MEMBERS }}
-        continue-on-error: true
-      
-      - name: Check notification status
-        if: steps.slack.outputs.message-sent == 'true'
-        run: echo "Notification sent successfully!"
-```
-
 ## ⚙️ Inputs
 
 | Input | Description | Required | Default |
