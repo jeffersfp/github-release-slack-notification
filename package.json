@@ -43,7 +43,7 @@
     "postinstall": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^2.0.1",
     "@actions/github": "^6.0.1",
     "@instantish/mack": "^1.2.0",
     "@vercel/ncc": "^0.38.4"
