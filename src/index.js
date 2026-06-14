@@ -115,7 +115,7 @@ async function createSlackMessage(inputs, releaseData) {
   };
 
   // Add changelog section if specified
-  if (inputs.includeChangeLog && releaseBodyBlocks.length > 0) {
+  if (inputs.includeChangelog && releaseBodyBlocks.length > 0) {
     message.blocks.push(dividerBlock, ...releaseBodyBlocks);
   }
 
